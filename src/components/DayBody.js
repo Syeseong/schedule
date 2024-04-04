@@ -1,6 +1,6 @@
 const DayBody = () => {
     const days = [];
-    const date = ["Sun", "Mon", "Thu", "Wed", "Thrs", "Fri", "Sat"];
+    const date = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
     for (let i = 0; i < 7; i++) {
         days.push(

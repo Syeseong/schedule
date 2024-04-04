@@ -1,15 +1,42 @@
-.DetailHeader {
-    border: 2px solid rgb(67, 67, 155);
+/* ----- AddSchedule CSS ----- */
+.AddSchedule {
+    /* border: 1px solid red; */
 }
 
-.detailHeader_wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
+.addSchedule_text {
+    /* border: 1px solid gray; */
+    padding: 9px 20px;
 }
 
-.detailHeader_wrapper div {
-    margin-right: 10px;
-    font-size: 21px;
+.addSchedule_text input {
+    border: none;
+    width: 100%;
+    height: 20px;
     font-family: "Dongle", sans-serif;
+    font-size: 20px;
+    outline: none;
+}
+
+.addSchedule_start,
+.addSchedule_end {
+    /* border: 1px solid gray; */
+    display: flex;
+    justify-content: space-between;
+    font-family: "Dongle", sans-serif;
+    font-size: 25px;
+    padding: 0 20px;
+}
+
+.addSchedule_start input,
+.addSchedule_end input {
+    border: none;
+    width: 200px;
+    font-family: "Dongle", sans-serif;
+    font-size: 25px;
+    text-align: center;
+    outline: none;
+}
+
+.AddSchedule .Button {
+    position: relative;
 }

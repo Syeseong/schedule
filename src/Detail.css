@@ -1,0 +1,42 @@
+/* ----- DetailSchedule CSS ----- */
+.DetailSchedule {
+    height: 100vh;
+}
+
+/* ----- DetailHeader CSS -----*/
+.DetailHeader {
+    border: 2px solid white
+}
+
+.detailHeader_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.detailHeader_date_box {
+    display: flex;
+}
+
+.detailHeader_date_box div {
+    margin-right: 10px;
+    font-size: 21px;
+    font-family: "Dongle", sans-serif;
+}
+
+/* ----- NonSchedule CSS ----- */
+.NonSchedule {
+    /* border: 1px solid red; */
+    background-color: rgb(226, 226, 226);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nonSchedule_text {
+    font-family: "Dongle", sans-serif;
+    font-size: 50px;
+    color: rgb(165, 163, 163);
+}

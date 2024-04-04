@@ -16,7 +16,7 @@
 }
 
 .Button button.add_btn {
-    background-color: blue;
+    background-color: rgb(88, 88, 235);
 }
 
 .Button button.remove_btn {
@@ -24,9 +24,15 @@
 }
 
 .Button button.save_btn {
-    background-color: rgba(241, 65, 197, 0.829);
+    background-color: rgb(255, 255, 255);
+    color: black;
 }
 
 .Button button.modify_btn {
     background-color: rgb(20, 189, 20);
+}
+
+.Button button.cancle_btn {
+    background-color: rgb(255, 255, 255);
+    color: black;
 }

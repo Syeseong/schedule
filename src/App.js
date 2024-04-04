@@ -1,14 +1,14 @@
 
 import { useState } from 'react';
 import './App.css';
-import './Add.css';
+import './Detail.css';
 import './Button.css'
+import './Add.css'
 import Header from './components/Header';
 import { addMonths, subMonths } from 'date-fns';
 import DayBody from './components/DayBody';
 import CellBody from './components/CellBody';
-import { Route, Router } from 'react-router-dom';
-import DetailSchedule from './pages/DetailShedule';
+import DetailSchedule from './pages/DetailSchedule';
 
 
 function App() {
