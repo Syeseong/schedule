@@ -1,4 +1,4 @@
-import { addDays, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
+import { addDays, endOfMonth, endOfWeek, format, getDay, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
 
 const CellBody = ({ currentMonth, selectedDate, onDateClick }) => {
 
@@ -21,8 +21,18 @@ const CellBody = ({ currentMonth, selectedDate, onDateClick }) => {
         for (let i = 0; i < 7; i++) {
             formmatedDate = format(day, 'd')
             const cloneDay = day;
+            //현재 날짜의 요일을 숫자로 가져옴
+            const dayOfWeek = getDay(day);
+            //토요일, 일요일을 정하는 클래스
+            let dayClass = "";
+            //토요일, 일요일을 정하는 조건문
+            if (dayOfWeek === 0) {
+                dayClass = "sunday"
+            } else if (dayOfWeek === 6) {
+                dayClass = "saturday"
+            }
             days.push(
-                <div className={`day_col ${!isSameMonth(day, monthStart) ? "disabled" : isSameDay(day, selectedDate) ? "selected" : format(currentMonth, 'M') !== format(day, 'M') ? "not-valid" : "valid"}`}
+                <div className={`day_col ${dayClass} ${!isSameMonth(day, monthStart) ? "disabled" : isSameDay(day, selectedDate) ? "selected" : format(currentMonth, 'M') !== format(day, 'M') ? "not-valid" : "valid"}`}
                     key={day}
                     onClick={() => { onDateClick(cloneDay) }}>
                     <span className={format(currentMonth, 'M') !== format(day, 'M') ? "not-valid" : ""}>

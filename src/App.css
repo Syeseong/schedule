@@ -94,6 +94,14 @@ body {}
   color: black;
 }
 
+.CellBody .day_col.sunday {
+  color: red;
+}
+
+.CellBody .day_col.saturday {
+  color: blue;
+}
+
 .CellBody .day_col.disabled {
   color: rgb(190, 183, 183);
 }
