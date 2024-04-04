@@ -17,3 +17,60 @@ a {
 }
 
 body {}
+
+/* Header CSS */
+.Header {
+  border: 2px solid rgb(67, 67, 155);
+}
+
+.Header_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.Header_wrapper div {
+  margin-right: 10px;
+}
+
+.month_text {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.year_text {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.month_left_btn,
+.month_right_btn {
+  background-color: rgba(207, 203, 203, 0.842);
+  border-radius: 10px;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* DayBody CSS */
+.DayBody {
+  /* border: 1px solid red; */
+  display: flex;
+  padding: 5px 0;
+}
+
+.DayBody div {
+  border: 1px solid black;
+  flex: 1;
+  border-radius: 7px;
+  margin-right: 5px;
+  text-align: center;
+  font-family: "Dongle", sans-serif;
+  font-size: 25px;
+  background-color: rgb(250, 216, 227);
+}
+
+.DayBody div:nth-child(7) {
+  margin-right: 0;
+}
