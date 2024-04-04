@@ -1,0 +1,15 @@
+.DetailHeader {
+    border: 2px solid rgb(67, 67, 155);
+}
+
+.detailHeader_wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.detailHeader_wrapper div {
+    margin-right: 10px;
+    font-size: 21px;
+    font-family: "Dongle", sans-serif;
+}

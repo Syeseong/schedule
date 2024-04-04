@@ -1,10 +1,14 @@
 
 import { useState } from 'react';
 import './App.css';
-import Header from './component/Header';
+import './Add.css';
+import './Button.css'
+import Header from './components/Header';
 import { addMonths, subMonths } from 'date-fns';
-import DayBody from './component/DayBody';
-import CellBody from './component/CellBody';
+import DayBody from './components/DayBody';
+import CellBody from './components/CellBody';
+import { Route, Router } from 'react-router-dom';
+import DetailSchedule from './pages/DetailShedule';
 
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
         currentMonth={currentMonth}
         selectedDate={selectedDate}
         onDateClick={onDateClick} />
+      <DetailSchedule selectedDate={selectedDate} />
     </div>
   );
 }
