@@ -19,6 +19,37 @@ a {
 /* ----- WeekdaySelector CSS ----- */
 .WeekdaySelector {
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
 
+.WeekdaySelector_box {
+  display: flex
+}
+
+.WeekdaySelector_box li {
+
+  flex: 1;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  font-family: "Dongle", sans-serif;
+  font-size: 25px;
+  cursor: pointer;
+  color: black;
+  border-radius: 0;
+}
+
+.WeekdaySelector_box li:nth-child(1) {
+  color: red;
+}
+
+.WeekdaySelector_box li:nth-child(7) {
+  color: blue;
+}
+
+.WeekdaySelector_box li.selected {
+  font-size: 35px;
+  background-color: rgb(247, 180, 190);
+  border-radius: 10px;
+  color: white;
 }
