@@ -74,3 +74,30 @@ body {}
 .DayBody div:nth-child(7) {
   margin-right: 0;
 }
+
+/* CellBody CSS */
+.CellBody {
+  /* border: 1px solid red; */
+}
+
+.CellBody .day_row {
+  display: flex;
+}
+
+.CellBody .day_col {
+  flex: 1;
+  height: 80px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-family: "Dongle", sans-serif;
+  font-size: 22px;
+  color: black;
+}
+
+.CellBody .day_col.disabled {
+  color: rgb(190, 183, 183);
+}
+
+.CellBody .day_col.selected {
+  background-color: rgba(216, 115, 20, 0.87);
+}

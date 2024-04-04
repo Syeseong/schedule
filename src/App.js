@@ -4,6 +4,7 @@ import './App.css';
 import Header from './component/Header';
 import { addMonths, subMonths } from 'date-fns';
 import DayBody from './component/DayBody';
+import CellBody from './component/CellBody';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
     setCurrentMonth(addMonths(currentMonth, 1))
   }
 
+  const onDateClick = (day) => {
+    setSelectedDate(day);
+  }
   return (
     <div className="App">
       <Header
@@ -28,6 +32,10 @@ function App() {
         nextMonth={nextMonth}
       />
       <DayBody />
+      <CellBody
+        currentMonth={currentMonth}
+        selectedDate={selectedDate}
+        onDateClick={onDateClick} />
     </div>
   );
 }
