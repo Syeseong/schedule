@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useSchedules } from "../context/ScheduleContext";
 
-const Header = ({ prevMonth, nextMonth }) => {
-    const { currentMonth,  } = useSchedules()
+const Header = () => {
+    const { currentMonth, prevMonth, nextMonth } = useSchedules()
     return (
         <div className="Header">
             <div className="Header_wrapper">
