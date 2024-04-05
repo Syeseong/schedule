@@ -1,8 +1,10 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
+import { useSchedules } from "../context/ScheduleContext";
 
-const Header = ({ currentMonth, prevMonth, nextMonth }) => {
+const Header = () => {
+    const { currentMonth, prevMonth, nextMonth } = useSchedules()
     return (
         <div className="Header">
             <div className="Header_wrapper">

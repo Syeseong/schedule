@@ -1,7 +1,8 @@
 import { addDays, endOfMonth, endOfWeek, format, getDay, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
+import { useSchedules } from "../context/ScheduleContext";
 
-const CellBody = ({ currentMonth, selectedDate, onDateClick }) => {
-
+const CellBody = () => {
+    const { currentMonth, selectedDate, onDateClick } = useSchedules();
 
     //오늘이 속한 달의 시작일
     const monthStart = startOfMonth(currentMonth)

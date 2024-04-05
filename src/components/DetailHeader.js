@@ -1,11 +1,17 @@
 import { format } from "date-fns";
 import Button from "./Button";
+import { useSchedules } from "../context/ScheduleContext";
 
-const DetailHeader = ({ selectedDate }) => {
+
+const DetailHeader = ({ btnOn }) => {
+
+    const { selectedDate } = useSchedules();
+
+
     return (
         <div className="DetailHeader">
             <div className="detailHeader_wrapper">
-                <Button text={"취소"} />
+                {btnOn && <Button text={"취소"} />}
                 <div className="detailHeader_date_box">
                     <div className="detailHeader_year">
                         <span>{format(selectedDate, 'yyyy')}</span>년
@@ -17,7 +23,8 @@ const DetailHeader = ({ selectedDate }) => {
                         <span>{format(selectedDate, 'd')}</span>일 일정
                     </div>
                 </div>
-                <Button text={"저장"} />
+                {btnOn && <Button text={"저장"} />}
+                {console.log(btnOn)}
             </div>
         </div>
     )

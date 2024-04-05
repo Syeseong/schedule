@@ -5,7 +5,8 @@
 
 /* ----- DetailHeader CSS -----*/
 .DetailHeader {
-    border: 2px solid white
+    border: 2px solid white;
+    height: 54px;
 }
 
 .detailHeader_wrapper {
@@ -16,6 +17,9 @@
 
 .detailHeader_date_box {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .detailHeader_date_box div {
