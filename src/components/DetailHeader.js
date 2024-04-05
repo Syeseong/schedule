@@ -4,7 +4,7 @@ import { useSchedules } from "../context/ScheduleContext";
 
 
 const DetailHeader = ({ btnOn }) => {
-    const { selectedDate, addSchedule, title, startTime, endTime, setTitle, setStartTime, setEndTime } = useSchedules();
+    const { selectedDate, addSchedule, title, startTime, endTime, setTitle, setStartTime, setEndTime, schedules } = useSchedules();
 
     return (
         <div className="DetailHeader">
@@ -21,7 +21,7 @@ const DetailHeader = ({ btnOn }) => {
                         <span>{format(selectedDate, 'd')}</span>일 일정
                     </div>
                 </div>
-                {btnOn && <Button text={"저장"} />}
+                {btnOn ? <Button text={"저장"} /> : <Button text={"추가"} />}
 
             </div>
         </div>

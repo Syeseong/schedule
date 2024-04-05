@@ -36,7 +36,11 @@ export const ScheduleProvider = ({ children }) => {
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
 
+    //상태에 따라 취소, 저장 버튼이 보이게 하는 State
+    const [btnOn, setBtnOn] = useState(false);
 
+    //상태에 따라 Add폼이 보이게 하는 State
+    const [addOn, setAddOn] = useState(false);
     const handleSave = () => {
         if (!title || !startTime || !endTime) {
             alert("모든 필드를 채워주세요.")
@@ -72,6 +76,10 @@ export const ScheduleProvider = ({ children }) => {
         endTime,
         setEndTime,
         handleSave,
+        btnOn,
+        setBtnOn,
+        addOn,
+        setAddOn,
     };
 
     return (

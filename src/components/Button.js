@@ -1,13 +1,16 @@
 import { useSchedules } from "../context/ScheduleContext"
 
-const Button = ({ text, setBtnOn }) => {
-    const { handleSave } = useSchedules()
+const Button = ({ text }) => {
+    const { handleSave, setBtnOn, setAddOn } = useSchedules()
     const handelButtonClick = () => {
 
         if (text === "추가") {
             setBtnOn(true)
+            setAddOn(true)
         } else if (text === "저장") {
             handleSave()
+            setBtnOn(false)
+            setAddOn(false)
         }
     }
     return (
