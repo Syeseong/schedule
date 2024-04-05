@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { addMonths, subMonths } from 'date-fns';
+import { addMonths, format, subMonths } from 'date-fns';
 
 const ScheduleContext = createContext();
 
@@ -36,6 +36,24 @@ export const ScheduleProvider = ({ children }) => {
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
 
+
+    const handleSave = () => {
+        if (!title || !startTime || !endTime) {
+            alert("모든 필드를 채워주세요.")
+            return;
+        }
+
+        const formattedDate = format(selectedDate, 'yyyy-MM-dd')
+        const newSchedule = {
+            date: formattedDate, title, startTime, endTime
+        }
+        addSchedule(newSchedule)
+
+        setTitle("");
+        setStartTime("");
+        setEndTime("");
+    }
+
     const value = {
         currentMonth,
         setCurrentMonth,
@@ -53,6 +71,7 @@ export const ScheduleProvider = ({ children }) => {
         setStartTime,
         endTime,
         setEndTime,
+        handleSave,
     };
 
     return (
