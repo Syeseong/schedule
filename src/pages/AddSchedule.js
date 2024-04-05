@@ -4,7 +4,7 @@ import { ScheduleProvider, useSchedules } from "../context/ScheduleContext";
 
 const AddSchedule = () => {
     //Context API 호출
-    const { addSchedule, title, setTitle, startTime, setStartTime, endTime, setEndTime } = useSchedules();
+    const { addSchedule, title, setTitle, startTime, setStartTime, endTime, setEndTime, currentSchedule, handleSave } = useSchedules();
 
     return (
         <div className="AddSchedule">

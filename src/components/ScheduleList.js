@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const ScheduleList = () => {
 
-    const { schedules } = useSchedules()
+    const { schedules, selectSchedule } = useSchedules()
 
     return (
         <>
@@ -18,7 +18,7 @@ const ScheduleList = () => {
                                 <span>{it.endTime}</span>
                             </div>
                         </div>
-                        <div className="scheduleList_text_box">
+                        <div onClick={() => selectSchedule(it.id)} className="scheduleList_text_box">
                             <span>{it.title}</span>
                         </div>
                     </div >
