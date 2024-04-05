@@ -8,17 +8,18 @@ import { useSchedules } from "../context/ScheduleContext";
 const DetailSchedule = () => {
     //상태에 따라 취소, 저장 버튼이 보이게 하는 State
     const [btnOn, setBtnOn] = useState(false);
-
+    const { schedule } = useSchedules();
+    let test = (btnOn === false && schedule === undefined);
     return (
         <div className="DetailSchedule">
             <DetailHeader
                 btnOn={btnOn} />
-            {/* <NonSchedule
-                setBtnOn={setBtnOn} />
-            <AddSchedule /> */}
+            {(btnOn === false && schedule === undefined) ? <NonSchedule
+                setBtnOn={setBtnOn} /> : <AddSchedule />}
+
             {/* <Button text={"추가"} /> */}
         </div>
     )
 }
 
-export default DetailSchedule;
+export default DetailSchedule
