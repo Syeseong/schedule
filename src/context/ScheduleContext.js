@@ -59,7 +59,7 @@ export const ScheduleProvider = ({ children }) => {
     //새 일정을 추가하는 함수
     const addSchedule = (newSchedule) => {
         //이전 스케줄을 복사하고 새로운 스케줄을 저장
-        setSchedules((prevSchedules) => [...prevSchedules, newSchedule]);
+        setSchedules((prevSchedules => [...prevSchedules, newSchedule]));
     };
 
     //일정을 삭제하는 함수
@@ -68,10 +68,42 @@ export const ScheduleProvider = ({ children }) => {
         setSchedules(updateSchedules)
     }
 
+    //시간 겹침 검사 함수
+    const isTimeOverlapping = (startTime1, endTime1, startTime2, endTime2) => {
+        const start1 = parseInt(startTime1.split(":")[0], 10) * 60 + parseInt(startTime1.split(":")[1], 10)
+        const end1 = parseInt(endTime1.split(":")[0], 10) * 60 + parseInt(endTime1.split(":")[1], 10)
+        const start2 = parseInt(startTime2.split(":")[0], 10) * 60 + parseInt(startTime2.split(":")[1], 10)
+        const end2 = parseInt(endTime2.split(":")[0], 10) * 60 + parseInt(endTime2.split(":")[1], 10)
+
+        return !(end1 < start2 || start1 > end2)
+    }
+
     const handleSave = () => {
+
         if (!title || !startTime || !endTime) {
             alert("모든 필드를 채워주세요.")
             return;
+        }
+
+        const start = parseInt(startTime.replace(":", ""), 10);
+        const end = parseInt(endTime.replace(":", ""), 10);
+        if (end < start) {
+            alert("종료 시간은 시작 시간보다 빠를 수 없습니다.")
+            return;
+
+        }
+
+        // 기존 일정들과의 시간 겹침 검사
+        const hasOverlap = schedules.some(it => {
+            if (it.date === format(selectedDate, 'yyyy-MM-dd')) {
+                return isTimeOverlapping(startTime, endTime, it.startTime, it.endTime)
+            }
+            return false
+        })
+
+        if (hasOverlap) {
+            alert("선택한 시간에 다른 일정이 있습니다.")
+            return
         }
 
         const formattedDate = format(selectedDate, 'yyyy-MM-dd')
@@ -80,16 +112,22 @@ export const ScheduleProvider = ({ children }) => {
             setSchedules(updateSchedule)
         } else {
             const newSchedule = {
-                id: Date.now(), date: formattedDate, title, startTime, endTime
+                id: Date.now(),
+                date: formattedDate,
+                title,
+                startTime,
+                endTime
             }
-            addSchedule(newSchedule)
+            setSchedules(prev => [...prev, newSchedule])
         }
+
         setCurrentSchecule(null);
         setTitle("");
         setStartTime("");
         setEndTime("");
         setBtnOn(false);
         setAddOn(false);
+
     }
 
     const value = {
