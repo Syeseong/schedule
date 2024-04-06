@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+span {
+  margin: 0;
+  padding: 0;
+}
+
 ul,
 li {
   list-style: none;
@@ -110,12 +115,20 @@ body {}
 
 .CellBody .day_col {
   flex: 1;
-  height: 80px;
+  height: 90px;
   border: 1px solid rgb(221, 218, 218);
   font-family: "Dongle", sans-serif;
   font-size: 22px;
   color: black;
+  position: relative;
+  overflow-y: auto;
   /* margin: 1px; */
+}
+
+.CellBody .day_col span {
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid red; */
 }
 
 .CellBody .day_col.sunday {
@@ -132,7 +145,21 @@ body {}
 
 .CellBody .day_col.selected {
   /* background-color: rgba(241, 183, 128, 0.87); */
-  font-size: 25px;
   /* color: hotpink; */
-  border: 1px solid black
+  border: 1px solid black;
+}
+
+/* schedule-preview */
+.event-marker {
+  /* border: 1px solid red; */
+  border-radius: 3px;
+  background-color: rgb(139, 240, 156);
+  font-size: 1rem;
+  line-height: 1;
+  margin-bottom: 1px;
+  box-sizing: border-box;
+  position: relative;
+  width: 98%;
+  left: 50%;
+  transform: translateX(-50%);
 }

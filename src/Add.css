@@ -18,7 +18,8 @@
 }
 
 .addSchedule_start,
-.addSchedule_end {
+.addSchedule_end,
+.addSchedule_color {
     /* border: 1px solid gray; */
     display: flex;
     justify-content: space-between;
@@ -39,4 +40,19 @@
 
 .AddSchedule .Button {
     position: relative;
+}
+
+.addSchedule_color {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+}
+
+.color_box {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    ;
 }

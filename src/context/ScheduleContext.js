@@ -13,10 +13,11 @@ export const ScheduleProvider = ({ children }) => {
     //일정 데이터를 저장할 State
     const [schedules, setSchedules] = useState([]);
 
-    //일정 내용, 시작시간, 종료시간을 저장할 State들
+    //일정 내용, 시작시간, 종료시간, 색상을 저장할 State들
     const [title, setTitle] = useState("");
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
+    const [color, setColor] = useState("#FFFFFF");
 
     //상태에 따라 취소, 저장 버튼이 보이게 하는 State
     const [btnOn, setBtnOn] = useState(false);
@@ -116,7 +117,8 @@ export const ScheduleProvider = ({ children }) => {
                 date: formattedDate,
                 title,
                 startTime,
-                endTime
+                endTime,
+                color
             }
             setSchedules(prev => [...prev, newSchedule])
         }
@@ -125,6 +127,7 @@ export const ScheduleProvider = ({ children }) => {
         setTitle("");
         setStartTime("");
         setEndTime("");
+        setColor("");
         setBtnOn(false);
         setAddOn(false);
 
@@ -157,7 +160,9 @@ export const ScheduleProvider = ({ children }) => {
         modalOn,
         setModalOn,
         modalId,
-        setModalId
+        setModalId,
+        color,
+        setColor
     };
 
     return (

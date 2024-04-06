@@ -2,7 +2,7 @@ import { addDays, endOfMonth, endOfWeek, format, getDay, isSameDay, isSameMonth,
 import { useSchedules } from "../context/ScheduleContext";
 
 const CellBody = () => {
-    const { currentMonth, selectedDate, onDateClick } = useSchedules();
+    const { currentMonth, selectedDate, onDateClick, schedules } = useSchedules();
 
     //오늘이 속한 달의 시작일
     const monthStart = startOfMonth(currentMonth)
@@ -27,6 +27,10 @@ const CellBody = () => {
             //토요일, 일요일을 정하는 클래스
             let dayClass = "";
             //토요일, 일요일을 정하는 조건문
+
+            const todaySchedules = schedules.filter(it =>
+                format(new Date(it.date), 'd') === formmatedDate)
+
             if (dayOfWeek === 0) {
                 dayClass = "sunday"
             } else if (dayOfWeek === 6) {
@@ -39,6 +43,12 @@ const CellBody = () => {
                     <span className={format(currentMonth, 'M') !== format(day, 'M') ? "not-valid" : ""}>
                         {formmatedDate}
                     </span>
+                    {todaySchedules.map((schedule, index) => (
+                        <div key={index} className="event-marker">
+                            {`${schedule.title.substring(0, 5)}${schedule.title.length > 5 ? "..." : ""}`}
+                        </div>
+                    ))}
+                    {console.log(todaySchedules.length)}
                 </div>
             )
             day = addDays(day, 1)
