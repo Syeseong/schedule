@@ -23,6 +23,10 @@ export const ScheduleProvider = ({ children }) => {
     //상태에 따라 Add폼이 보이게 하는 State
     const [addOn, setAddOn] = useState(false);
 
+    //상태에 따라 모달창이 보이게 하는 State
+    const [modalOn, setModalOn] = useState(false);
+    //
+    const [modalId, setModalId] = useState(null)
     //선택된 일정 상태
     const [currentSchedule, setCurrentSchecule] = useState(null)
 
@@ -57,6 +61,12 @@ export const ScheduleProvider = ({ children }) => {
         //이전 스케줄을 복사하고 새로운 스케줄을 저장
         setSchedules((prevSchedules) => [...prevSchedules, newSchedule]);
     };
+
+    //일정을 삭제하는 함수
+    const deleteSchedule = (scheduleId) => {
+        const updateSchedules = schedules.filter(it => it.id !== scheduleId)
+        setSchedules(updateSchedules)
+    }
 
     const handleSave = () => {
         if (!title || !startTime || !endTime) {
@@ -104,7 +114,12 @@ export const ScheduleProvider = ({ children }) => {
         setBtnOn,
         addOn,
         setAddOn,
-        selectSchedule
+        selectSchedule,
+        deleteSchedule,
+        modalOn,
+        setModalOn,
+        modalId,
+        setModalId
     };
 
     return (

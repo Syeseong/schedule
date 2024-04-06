@@ -1,5 +1,5 @@
 .Button {
-    width: 100px;
+    width: 50px;
     height: 30px;
     /* border: 1px solid red; */
 
@@ -21,7 +21,11 @@
 }
 
 .Button button.remove_btn {
-    background-color: red;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    /* border: 1px solid red; */
 }
 
 .Button button.save_btn {

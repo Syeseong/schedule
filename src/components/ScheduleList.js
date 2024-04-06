@@ -1,9 +1,10 @@
 import { useSchedules } from "../context/ScheduleContext";
+import Modal from "../pages/Modal";
 import Button from "./Button";
 
 const ScheduleList = () => {
 
-    const { schedules, selectSchedule } = useSchedules()
+    const { schedules, selectSchedule, modalOn } = useSchedules()
 
     return (
         <>
@@ -18,12 +19,16 @@ const ScheduleList = () => {
                                 <span>{it.endTime}</span>
                             </div>
                         </div>
-                        <div onClick={() => selectSchedule(it.id)} className="scheduleList_text_box">
-                            <span>{it.title}</span>
+                        <div className="scheduleList_text_box">
+                            <span onClick={() => selectSchedule(it.id)}>{it.title}</span>
+                            <div>
+                                <Button text={"삭제"} id={it.id} />
+                            </div>
                         </div>
                     </div >
                 )
             })}
+            {modalOn && <Modal />}
         </>
     )
 }
