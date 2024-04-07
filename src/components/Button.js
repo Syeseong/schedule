@@ -3,8 +3,8 @@ import { useSchedules } from "../context/ScheduleContext"
 const Button = ({ text, id }) => {
     const { handleSave, setBtnOn, setAddOn, setModalId, setModalOn,
         setTitle, setStartTime, setEndTime, setColor, setCurrentSchecule } = useSchedules()
-    const handelButtonClick = () => {
 
+    const handelButtonClick = () => {
         if (text === "추가") {
             setBtnOn(true)
             setAddOn(true)
@@ -12,15 +12,15 @@ const Button = ({ text, id }) => {
             setStartTime("");
             setEndTime("");
             setColor(null);
-        } else if (text === "저장") {
+        } if (text === "저장") {
             handleSave()
             setBtnOn(false)
             setAddOn(false)
-        } else if (text === "삭제") {
+        } if (text === "삭제") {
             setModalOn(true)
             setModalId(id)
             // deleteSchedule(id)
-        } else if (text === "취소") {
+        } if (text === "취소") {
             setAddOn(false)
             setBtnOn(false)
             setCurrentSchecule(null)

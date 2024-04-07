@@ -131,11 +131,11 @@ body {}
   /* border: 1px solid red; */
 }
 
-.CellBody .day_col.sunday {
+.CellBody .day_col.sunday span {
   color: red;
 }
 
-.CellBody .day_col.saturday {
+.CellBody .day_col.saturday span {
   color: blue;
 }
 

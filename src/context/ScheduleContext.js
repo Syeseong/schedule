@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 import { addMonths, format, subMonths } from 'date-fns';
 
 const ScheduleContext = createContext();
@@ -81,7 +81,10 @@ export const ScheduleProvider = ({ children }) => {
 
         return !(end1 < start2 || start1 > end2)
     }
+    //선택된 날짜에 해당하는 일정만 필터링하는 함수
+    const filterSchedules = useMemo(() => schedules.filter(schedule => format(new Date(schedule.date), 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd')), [schedules, selectedDate])
 
+    //일정 추가 함수
     const handleSave = () => {
 
         if (!title || !startTime || !endTime) {
@@ -125,20 +128,24 @@ export const ScheduleProvider = ({ children }) => {
                 endTime,
                 color
             }
-            setSchedules(prev => [...prev, newSchedule])
-        }
 
+            setSchedules(prev => [...prev, newSchedule])
+
+        }
+        resetForm();
+    }
+
+    const resetForm = () => {
         setCurrentSchecule(null);
         setTitle("");
         setStartTime("");
         setEndTime("");
-        setColor(null);
+        setColor("#FFFFFF");
         setBtnOn(false);
         setAddOn(false);
+    };
 
-    }
-
-    const value = {
+    const value = useMemo(() => ({
         currentMonth,
         setCurrentMonth,
         selectedDate,
@@ -168,8 +175,39 @@ export const ScheduleProvider = ({ children }) => {
         setModalId,
         color,
         setColor,
-        setCurrentSchecule
-    };
+        setCurrentSchecule,
+        filterSchedules,
+    }), [currentMonth,
+        setCurrentMonth,
+        selectedDate,
+        setSelectedDate,
+        schedules,
+        setSchedules,
+        prevMonth,
+        nextMonth,
+        onDateClick,
+        addSchedule,
+        title,
+        setTitle,
+        startTime,
+        setStartTime,
+        endTime,
+        setEndTime,
+        handleSave,
+        btnOn,
+        setBtnOn,
+        addOn,
+        setAddOn,
+        selectSchedule,
+        deleteSchedule,
+        modalOn,
+        setModalOn,
+        modalId,
+        setModalId,
+        color,
+        setColor,
+        setCurrentSchecule,
+        filterSchedules,])
 
     return (
         <ScheduleContext.Provider value={value}>
