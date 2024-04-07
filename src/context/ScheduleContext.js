@@ -35,6 +35,7 @@ export const ScheduleProvider = ({ children }) => {
     const selectSchedule = (scheduleId) => {
         const schedule = schedules.find(it => it.id === scheduleId);
         if (schedule) {
+            console.log("실행")
             setCurrentSchecule(schedule);
             setTitle(schedule.title)
             setStartTime(schedule.startTime)
@@ -43,6 +44,7 @@ export const ScheduleProvider = ({ children }) => {
             setBtnOn(true);
         }
     }
+
 
     //subMonths() == Date 객체의 월에서 빼줌 
     const prevMonth = () => {
@@ -55,6 +57,7 @@ export const ScheduleProvider = ({ children }) => {
     //선택한 날짜를 가지고 오는 이벤트 핸들러
     const onDateClick = (day) => {
         setSelectedDate(day)
+        setCurrentSchecule(null)
     }
 
     //새 일정을 추가하는 함수
@@ -95,12 +98,14 @@ export const ScheduleProvider = ({ children }) => {
         }
 
         // 기존 일정들과의 시간 겹침 검사
-        const hasOverlap = schedules.some(it => {
-            if (it.date === format(selectedDate, 'yyyy-MM-dd')) {
-                return isTimeOverlapping(startTime, endTime, it.startTime, it.endTime)
+        // 시간 겹침 검사
+        const hasOverlap = schedules.some((schedule) => {
+            // currentSchedule이 존재하고, 그 id가 현재 검사하려는 일정의 id와 같다면, 이는 현재 수정 중인 일정이므로, 겹침 검사에서 제외
+            if (currentSchedule && schedule.id === currentSchedule?.id) {
+                return false; // 현재 수정 중인 일정은 검사에서 제외
             }
-            return false
-        })
+            return schedule.date === format(selectedDate, 'yyyy-MM-dd') && isTimeOverlapping(startTime, endTime, schedule.startTime, schedule.endTime);
+        });
 
         if (hasOverlap) {
             alert("선택한 시간에 다른 일정이 있습니다.")
@@ -109,7 +114,7 @@ export const ScheduleProvider = ({ children }) => {
 
         const formattedDate = format(selectedDate, 'yyyy-MM-dd')
         if (currentSchedule) {
-            const updateSchedule = schedules.map(it => it.id === currentSchedule.id ? { ...it, title, startTime, endTime } : it)
+            const updateSchedule = schedules.map(it => it.id === currentSchedule.id ? { ...it, title, startTime, endTime, color } : it)
             setSchedules(updateSchedule)
         } else {
             const newSchedule = {
@@ -127,7 +132,7 @@ export const ScheduleProvider = ({ children }) => {
         setTitle("");
         setStartTime("");
         setEndTime("");
-        setColor("");
+        setColor(null);
         setBtnOn(false);
         setAddOn(false);
 
@@ -162,7 +167,8 @@ export const ScheduleProvider = ({ children }) => {
         modalId,
         setModalId,
         color,
-        setColor
+        setColor,
+        setCurrentSchecule
     };
 
     return (

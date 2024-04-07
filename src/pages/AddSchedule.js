@@ -6,16 +6,17 @@ const AddSchedule = () => {
     //Context API 호출
     const { title, setTitle, startTime, setStartTime, endTime, setEndTime, color, setColor } = useSchedules();
 
-    useEffect(() => {
-        setTitle("");
-        setStartTime("");
-        setEndTime("");
-        setColor("FFFFFF");
-    }, [])
 
     const colorOptions =
         ["#98FB98", "#FFFF00", "#F08080", "#00BFFF", "#9400D3", "#DCDCDC"];
 
+    const handleColorClick = (clickColor) => {
+        if (clickColor === color) {
+            setColor(null)
+        } else {
+            setColor(clickColor);
+        }
+    }
     return (
         <div className="AddSchedule">
             <div className="addSchedule_text">
@@ -32,10 +33,12 @@ const AddSchedule = () => {
                 <input type="time" value={endTime} onChange={(e) => { setEndTime(e.target.value) }} />
             </div>
             <div className="addSchedule_color">
-                <div>색상</div>
+                <div>배너</div>
                 {colorOptions.map(it => (
-                    <button className="color_box" key={it} style={{ backgroundColor: it }}
-                        onClick={() => setColor(it)} />
+                    <input onChange={(e) => {
+                        setColor(e.target.value)
+                    }} className="color_box" key={it} style={{ backgroundColor: color === it || color === null ? it : "#DCDCDC" }}
+                        onClick={() => handleColorClick(it)} />
                 ))}
             </div>
         </div>
