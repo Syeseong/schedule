@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { addMonths, format, subMonths } from 'date-fns';
 
 const ScheduleContext = createContext();
@@ -6,6 +6,8 @@ const ScheduleContext = createContext();
 export const useSchedules = () => useContext(ScheduleContext);
 
 export const ScheduleProvider = ({ children }) => {
+
+
     //new Date()는 현재 날짜를 가지고 옴,(월은 0월부터 시작 ex:0 == 1월)
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -144,6 +146,19 @@ export const ScheduleProvider = ({ children }) => {
         setBtnOn(false);
         setAddOn(false);
     };
+
+    //컴포넌트 마운트 시 로컬 스토리지에서 일정 불러오기
+    useEffect(() => {
+        const loadSchedules = localStorage.getItem('schedules');
+        if (loadSchedules) {
+            setSchedules(JSON.parse(loadSchedules))
+        }
+    }, [])
+
+    //Schedules 상태가 변경될 때마다 로컬 스토리지에 저장
+    useEffect(() => {
+        localStorage.setItem('schedules', JSON.stringify(schedules))
+    }, [schedules])
 
     const value = useMemo(() => ({
         currentMonth,
