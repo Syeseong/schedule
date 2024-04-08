@@ -1,10 +1,11 @@
 import { format } from "date-fns";
 import Button from "./Button";
 import { useSchedules } from "../context/ScheduleContext";
+import Modal2 from "../pages/Modal2";
 
 
 const DetailHeader = ({ btnOn }) => {
-    const { selectedDate, addSchedule, title, startTime, endTime, setTitle, setStartTime, setEndTime, schedules } = useSchedules();
+    const { selectedDate, modalOn2 } = useSchedules();
 
     return (
         <div className="DetailHeader">
@@ -22,8 +23,8 @@ const DetailHeader = ({ btnOn }) => {
                     </div>
                 </div>
                 {btnOn ? <Button text={"저장"} /> : <Button text={"추가"} />}
-
             </div>
+            {modalOn2 && <Modal2 />}
         </div>
     )
 }

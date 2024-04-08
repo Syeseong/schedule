@@ -7,7 +7,11 @@ export const useSchedules = () => useContext(ScheduleContext);
 
 export const ScheduleProvider = ({ children }) => {
 
-
+    //modal2 State : 시간이 겹칠 때, 필드입력X, 시작 < 종료
+    const [modalOn2, setModalOn2] = useState(false)
+    const [modalTimeIn, setModalTimeIn] = useState(false)
+    const [modalField, setModalField] = useState(false)
+    const [modalStartOfEnd, setModalStartOfEnd] = useState(false)
     //new Date()는 현재 날짜를 가지고 옴,(월은 0월부터 시작 ex:0 == 1월)
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -90,14 +94,15 @@ export const ScheduleProvider = ({ children }) => {
     const handleSave = () => {
 
         if (!title || !startTime || !endTime) {
-            alert("모든 필드를 채워주세요.")
+            setModalId(true)
+            setModalField(true)
             return;
         }
 
         const start = parseInt(startTime.replace(":", ""), 10);
         const end = parseInt(endTime.replace(":", ""), 10);
         if (end < start) {
-            alert("종료 시간은 시작 시간보다 빠를 수 없습니다.")
+            setModalStartOfEnd(true)
             return;
 
         }
@@ -113,7 +118,7 @@ export const ScheduleProvider = ({ children }) => {
         });
 
         if (hasOverlap) {
-            alert("선택한 시간에 다른 일정이 있습니다.")
+            setModalTimeIn(true)
             return
         }
 
@@ -192,6 +197,7 @@ export const ScheduleProvider = ({ children }) => {
         setColor,
         setCurrentSchecule,
         filterSchedules,
+        modalTimeIn, setModalTimeIn, modalField, setModalField, modalStartOfEnd, setModalStartOfEnd, modalOn2, setModalOn2
     }), [currentMonth,
         setCurrentMonth,
         selectedDate,
@@ -222,7 +228,7 @@ export const ScheduleProvider = ({ children }) => {
         color,
         setColor,
         setCurrentSchecule,
-        filterSchedules,])
+        filterSchedules, modalTimeIn, setModalTimeIn, modalField, setModalField, modalStartOfEnd, setModalStartOfEnd, modalOn2, setModalOn2])
 
     return (
         <ScheduleContext.Provider value={value}>

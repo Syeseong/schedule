@@ -2,7 +2,7 @@ import { useSchedules } from "../context/ScheduleContext"
 
 const Button = ({ text, id }) => {
     const { handleSave, setBtnOn, setAddOn, setModalId, setModalOn,
-        setTitle, setStartTime, setEndTime, setColor, setCurrentSchecule } = useSchedules()
+        setTitle, setStartTime, setEndTime, setColor, setCurrentSchecule, setModalOn2 } = useSchedules()
 
     const handelButtonClick = () => {
         if (text === "추가") {
@@ -16,6 +16,7 @@ const Button = ({ text, id }) => {
             handleSave()
             setBtnOn(false)
             setAddOn(false)
+            setModalOn2(true)
         } if (text === "삭제") {
             setModalOn(true)
             setModalId(id)

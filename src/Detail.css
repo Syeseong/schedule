@@ -45,7 +45,7 @@
 .NonSchedule {
     /* border: 1px solid red; */
     background-color: rgb(226, 226, 226);
-    height: 100%;
+    height: calc(100% - 54px);
     display: flex;
     justify-content: center;
     align-items: center;

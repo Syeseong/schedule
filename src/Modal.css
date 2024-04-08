@@ -1,16 +1,19 @@
-.Modal {
+.Modal,
+.Modal2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 5px;
     width: 300px;
     height: 150px;
     position: absolute;
     background-color: rgb(255, 255, 255);
+    z-index: 1000;
 }
 
-.modal_text_box {
+.modal_text_box,
+.modal_text_box2 {
     /* border: 1px solid black; */
     width: 100%;
     top: 30px;
@@ -21,14 +24,16 @@
 
 }
 
-.modal_btn_box {
+.modal_btn_box,
+.modal_btn_box2 {
     /* border: 1px solid blue; */
     position: absolute;
     bottom: 15px;
     right: 15px;
 }
 
-.yes_btn {
+.yes_btn,
+.yes_btn2 {
     border-radius: 5px;
     height: 30px;
     width: 50px;
@@ -50,4 +55,19 @@
     font-family: "Dongle", sans-serif;
     background-color: rgb(138, 211, 160);
     cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.modal-overlay.display-block {
+    display: block;
 }
